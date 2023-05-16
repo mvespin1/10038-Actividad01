@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Estilos Google -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <title>Producto</title>
+</head>
+<body>
+
+<form name="FormProducto" method="post" action="">
+  <p>&nbsp;</p>
+  <fieldset>
+    <legend>Datos Básicos</legend>
+    <p>
+  
+      <p>
+        <label for="nombreProducto">Nombre del Producto:</label>
+        <input type="text" name="nombreProducto" id="nombreProducto" required autofocus>
+      </p>
+
+      <p>
+        <label for="descripcion">Descripción:</label><br>
+        <textarea name="descripcion" id="descripcion" required></textarea>
+        </p>
+
+        <p>
+          <label for="foto">Foto:</label><br>
+          <input type="file" id="foto" name="foto" accept="image/*" onchange="mostrarNombreArchivo()"><br>
+          <p id="nombreArchivo"></p>
+        </p><br>
+
+      <p>
+        <input type="checkbox" id="infoConfidencial" name="infoConfidencial" value="1">
+        <label for="infoConfidencial">Añadir información confidencial.</label>
+      </p>
+
+  </fieldset>
+
+  <br>
+
+  <fieldset>
+    <legend>Datos Económicos</legend>
+    <p>
+  
+      <p>
+        <label for="precio" >Precio: </label>
+        <input type="number" name="precio" id="precio" required>
+      </p>
+
+      <p>
+        <label for="impuestos">Impuestos: </label>
+        <select name="impuestos" id="impuestos">
+            <option value="cuatro">4%</option>
+            <option value="ocho">8%</option>
+            <option value="doce">12%</option>
+            <option value="catorce">14%</option>
+        </select>
+    </p>
+
+      <p>
+        <label for="promocion">Promoción:</label>
+        <br>
+
+        <input type="radio" name="promocion" id="promocion_opcion1" value="opcion1" required>
+        <label for="promocion_opcion1">Ninguno</label>
+        <br>
+
+        <input type="radio" name="promocion" id="promocion_opcion2" value="opcion2">
+        <label for="promocion_opcion2">Transporte gratuito</label>
+        <br>
+
+        <input type="radio" name="promocion" id="promocion_opcion3" value="opcion3">
+        <label for="promocion_opcion3">Descuento 5%</label>
+</p>
+
+  </fieldset>
+
+  <p>
+        <button class="button" type="button" onclick="grabar()">Guardar Cambios</button> 
+    </p>
+
+    <p>
+        <button class="button" type="reset">Borrar los datos introducidos</button> 
+    </p>
+
+</form>
+
+<script>
+  function mostrarNombreArchivo() {
+    const input = document.getElementById('foto');
+    const nombreArchivo = document.getElementById('nombreArchivo');
+    nombreArchivo.textContent = input.files[0].name;
+  }
+</script>
+
+   <script src="js/jquery.js"></script>
+   <script src="js/main.js"></script>
+
+</body>
+</html>

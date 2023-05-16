@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Estilos Google -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/Misestilos.css">
+
+    <title>Contacto</title>
+</head>
+<body>
+  <form name="FormContacto" method="post" action="" onsubmit="return validar();">
+
+    <h2>Contacto</h2>
+    <p>
+  
+      <p>
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" name="correo" id="correo" placeholder="&#9993; usuario@mail.com" required autofocus>
+      </p>
+  
+      <p>
+        <label for="fechaNac">Fecha de Nacimiento:</label><br>
+        <input type="date" name="fechaNac" id="fechaNac" required></input>
+      </p>
+  
+      <p>
+        <label for="telefono">Teléfono:</label><br>
+        <input type="tel" name="telefono" id="telefono" placeholder= "&#9742; Teléfono" required>
+      </p>
+  
+      <input type="button" name="enviar" id="enviar" value="Enviar" onclick="enviarFormulario()">
+    
+  </form>
+  
+  <script>
+    function validar(enviarFormulario) {
+      var correo = document.getElementById("correo").value;
+      var fechaNac = document.getElementById("fechaNac").value;
+      var telefono = document.getElementById('telefono').value;    
+      
+      // Validación del correo electrónico
+      var expresionCorreo = /^[a-z][\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+      if (!expresionCorreo.test(correo)) {
+        alert("Introduzca una dirección de correo electrónico válida.");
+        return false;
+      }
+    
+      // Validación de la fecha de nacimiento
+      var expresionFecha = /^[0-9]{4}-[0-9]{2}-[0-9]{2}$/;
+      if (!expresionFecha.test(fechaNac)) {
+        alert("Introduzca una fecha de nacimiento válida en el formato AAAA-MM-DD.");
+        return false;
+      }
+    
+      // Validación del teléfono
+      if (telefono.length != 10 || isNaN(telefono)) {
+        alert("Introduzca un número de teléfono válido de 10 dígitos.");
+        return false;
+      }
+    
+      // Si todas las validaciones son exitosas y se debe enviar el formulario, se envía
+      if (enviarFormulario) {
+        this.form.submit();
+      }
+      
+      return true;
+    }
+  
+    function enviarFormulario() {
+      var boton = document.getElementById("enviar");
+      boton.disabled = true;
+      boton.value = "Enviando datos ...";
+      var formularioValido = validar(true);
+      if (formularioValido) {
+        this.form.submit();
+      }
+    }
+  </script>
+   
+   <script src="js/jquery.js"></script>
+   <script src="js/main.js"></script>
+
+</body>
+</html>

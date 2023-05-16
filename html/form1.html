@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <!-- Estilos Google -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Ubuntu" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <title>Direccion de Envio</title>
+</head>
+<body>
+
+<form name="form1" method="post" action="">
+
+<br>
+
+<div class="container">
+
+  <fieldset id="direccionEnvio" class="fieldset-izquierdo">
+    <legend>DIRECCION DE ENVIO</legend>
+    <p>
+  
+      <p>
+        <label for="callePrincipal" >Calle Principal:</label><br>
+        <input type="text" name="callePrincipal" id="callePrincipal" required autofocus>
+      </p>
+
+      <p>
+        <label for="transversal" >Transversal:</label><br>
+        <input type="text" name="transversal" id="transversal" required>
+      </p><br>
+
+      <p>
+        <input type="checkbox" id="entregaPro" name="entregaPro" value="1">
+        <label for="entregaPro">Entrega al propietario.</label>
+      </p>
+
+      <p>
+        <input type="checkbox" id="entregaTercero" name="entregaTercero" value="1">
+        <label for="entregaTercero">Entrega a un tercero.</label>
+      </p>
+
+      <p>
+        <label for="cantones">Cantones: </label>
+        <select name="cantones" id="cantones">
+            <optgroup label="Distrito Metropolitano de Quito">
+                <option value="quito">Quito</option>
+                <option value="cayambe">Cayambe</option>
+                <option value="mejia">Mejía</option>
+                <option value="pedro-moncayo">Pedro Moncayo</option>
+                <option value="pedro-vicente-maldonado">Pedro Vicente Maldonado</option>
+                <option value="puellaro">Puellaro</option>
+                <option value="ruminahui">Rumiñahui</option>
+                <option value="san-miguel-de-los-bancos">San Miguel de los Bancos</option>
+                <option value="pedro-murillo">Pedro Vicente Maldonado</option>
+            </optgroup>
+
+            <optgroup label="Otros cantones">
+                <option value="puerto-quito">Puerto Quito</option>
+                <option value="mejia">Mejía</option>
+                <option value="pedro-moncayo">Pedro Moncayo</option>
+            </optgroup>
+        </select>
+    </p>
+
+    <p>
+       <button class="button" type="button" onclick="grabar()" id="enviarDatosBtn"> ENVIAR DATOS </button>
+    </p>
+  </fieldset>
+
+  <br>
+
+  <fieldset id="infoConfidencial" class="fieldset-derecho" style="display:none">
+    <legend>INFORMACION CONFIDENCIAL</legend>
+    <p>
+  
+      <p>
+        <label for="codigoPostal" >Código Postal:</label>
+        <input type="text" name="codigoPostal" id="codigoPostal" required autofocus>
+      </p>
+
+      <p>
+        <label for="direccion">Referencia de la Dirección:</label><br>
+        <textarea name="direccion" id="direccion" required></textarea>
+        </p>
+
+    <p>
+        <button class="button" type="button" onclick="grabar()"> GUARDAR </button> 
+    </p>
+  </fieldset>
+
+</div>
+
+</form>
+
+<script>
+  
+// obtener los elementos del DOM
+const entregaProCheckbox = document.getElementById("entregaPro");
+const entregaTerceroCheckbox = document.getElementById("entregaTercero");
+const enviarDatosBtn = document.getElementById("enviarDatosBtn");
+const infoConfidencialFieldset = document.getElementById("infoConfidencial");
+
+// agregar controladores de eventos
+entregaProCheckbox.addEventListener("change", function() {
+    if (this.checked) {
+        enviarDatosBtn.disabled = false;
+    } else {
+        enviarDatosBtn.disabled = true;
+    }
+});
+
+entregaTerceroCheckbox.addEventListener("change", function() {
+    if (this.checked) {
+        infoConfidencialFieldset.style.display = "block";
+    } else {
+        infoConfidencialFieldset.style.display = "none";
+    }
+});
+
+</script>
+
+   <script src="js/jquery.js"></script>
+   <script src="js/main.js"></script>
+
+</body>
+</html>
