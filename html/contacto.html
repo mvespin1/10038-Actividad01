@@ -58,10 +58,11 @@
       }
     
       // Validación del teléfono
-      if (telefono.length != 10 || isNaN(telefono)) {
+      if (telefono.length !== 10 || isNaN(telefono) || !/^\d+$/.test(telefono)) {
         alert("Introduzca un número de teléfono válido de 10 dígitos.");
         return false;
       }
+
     
       // Si todas las validaciones son exitosas y se debe enviar el formulario, se envía
       if (enviarFormulario) {
